@@ -1,6 +1,6 @@
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { CtaSection as CtaSectionType } from "@/lib/contentful";
+import { CtaSection as CtaSectionType } from "../../lib/contentful";
 
 export default function CtaSection({
   headline,

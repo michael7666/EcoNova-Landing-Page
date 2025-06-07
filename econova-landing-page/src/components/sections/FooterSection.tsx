@@ -1,4 +1,4 @@
-import { FooterSection as FooterSectionType } from "@/lib/contentful";
+import { FooterSection as FooterSectionType } from "../../lib/contentful";
 
 export default function FooterSection({
   copyrightText,

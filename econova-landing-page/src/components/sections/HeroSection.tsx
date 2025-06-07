@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HeroSection as HeroSectionType } from "@/lib/contentful";
+import { HeroSection as HeroSectionType } from "../../lib/contentful";
 
 export default function HeroSection({
   headline,

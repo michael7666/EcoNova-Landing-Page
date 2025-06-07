@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { FeaturesSection as FeaturesSectionType } from "@/lib/contentful";
+import { FeaturesSection as FeaturesSectionType } from "../../lib/contentful";
 
 export default function FeaturesSection({
   title,

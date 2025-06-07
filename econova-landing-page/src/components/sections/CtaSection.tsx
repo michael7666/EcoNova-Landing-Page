@@ -1,3 +1,4 @@
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { CtaSection as CtaSectionType } from "@/lib/contentful";
 
@@ -7,12 +8,12 @@ export default function CtaSection({
   ctaButton,
 }: CtaSectionType) {
   return (
-    <section className="py-16 bg-gradient-to-r from-[#F88379] to-[#FF6F61] text-white text-center">
+    <section className="py-20 bg-gradient-to-r from-[#F9FAFB] to-[#89CFF0] opacity-90 text-white text-center">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-6">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-6">
           {headline || "Take Action Now"}
         </h2>
-        <div className="text-lg mb-8">
+        <div className="text-lg lg:text-xl mb-8">
           {description?.json ? (
             documentToReactComponents(description.json)
           ) : (
@@ -22,7 +23,7 @@ export default function CtaSection({
         {ctaButton && (
           <a
             href={ctaButton.ctaLink}
-            className="inline-block bg-[#FFC1BA] text-[#F56A5D] px-8 py-4 rounded-lg font-semibold hover:bg-[#FF9A8F] transition-all duration-300 shadow-md hover:shadow-lg"
+            className="inline-block bg-[#89CFF0] text-[#1E3A8A] px-8 py-4 rounded-full font-semibold hover:bg-[#00CED1] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
             aria-label={ctaButton.ctaText}
           >
             {ctaButton.ctaText || "Get Started"}

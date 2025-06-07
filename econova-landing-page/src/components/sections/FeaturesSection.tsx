@@ -7,9 +7,9 @@ export default function FeaturesSection({
   featuresCollection,
 }: FeaturesSectionType) {
   return (
-    <section className="py-16 bg-[#FFF1F0]">
+    <section className="py-16 bg-[#F9FAFB]">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">
+        <h2 className="text-4xl font-bold text-[#87CEEB] text-center mb-12">
           {title || "Our Features"}
         </h2>
         <div className="flex justify-center  gap-6">
@@ -25,7 +25,7 @@ export default function FeaturesSection({
                 />
               )}
               <div>
-                <h3 className="text-xl font-semibold text-[#F56A5D] mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-[#89CFF0] mb-2">{feature.title}</h3>
                 <div className="text-gray-700">
                   {feature.description?.json ? (
                     documentToReactComponents(feature.description.json)

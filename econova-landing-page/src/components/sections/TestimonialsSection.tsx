@@ -3,9 +3,9 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 export default function TestimonialsSection({ title, testimonialsCollection }: TestimonialSectionType) {
   return (
-    <section className="py-16 bg-[#FFF0EF]">
+    <section className="py-16 bg-[#F9FAFB]">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-[#F88379]">
+        <h2 className="text-4xl font-bold text-center mb-12 text-[#87CEEB]">
           {title || 'What Our Customers Say'}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -16,7 +16,7 @@ export default function TestimonialsSection({ title, testimonialsCollection }: T
                   {documentToReactComponents(testimonial.quote.json)}
                 </div>
               )}
-              <p className="font-semibold text-[#F56A5D]">{testimonial.authorName}</p>
+              <p className="font-semibold text-[#00CED1]">{testimonial.authorName}</p>
               <p className="text-gray-500">{testimonial.authorTitle}</p>
             </div>
           )) || <p className="text-center text-gray-600">No testimonials available</p>}

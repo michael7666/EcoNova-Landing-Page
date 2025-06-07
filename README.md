@@ -1,11 +1,25 @@
 # EcoNova-Landing-Page
 
-A dynamic, responsive landing page for the fictional EcoNova product, built with Next.js, TypeScript, Tailwind CSS, and Contentful as a headless CMS. The page supports dynamic section rendering, localization (English and Spanish), and adheres to headless CMS best practices.
+Welcome to the EcoNova Landing Page project! This is a Next.js application designed to showcase a sustainable energy company's offerings with support for multiple locales (English and Spanish). The page features a modern design with a blue/cyan color palette, optimized for performance and accessibility. A dynamic, responsive landing page for the fictional EcoNova product, built with Next.js, TypeScript, Tailwind CSS, and Contentful as a headless CMS. The page supports dynamic section rendering, localization (English and Spanish), and adheres to headless CMS best practices.
+
+Project Overview:
+EcoNova is a fictional renewable energy company aiming to promote sustainable innovation. This landing page serves as a showcase for its features, testimonials, call-to-action, and footer with social links and a newsletter signup.
+    - Technologies: Next.js, Tailwind CSS, Contentful (headless CMS)
+    - Locales: English (en-US), Spanish (es)
+    - Color Palette: Sky Blue (#87CEEB), Baby Blue (#89CFF0), Cyan (#00CED1), Deep Blue (#1E3A8A)
+
+Features:
+    - Hero Section: Full-screen background with a headline, subheadline, and CTA button.
+    - Features Section: Grid of cards highlighting key offerings with icons.
+    - Testimonials Section: Display of customer reviews in a card layout.
+    - CTA Section: Prominent call-to-action with a gradient background.
+    - Footer Section: Includes copyright, social links, and a newsletter signup.
+    - Language Switcher: Toggle between English and Spanish locales.
 
 Setup Instructions
 
 1. Clone the Repository:
-    git clone https://github.com/YourNewGitUsername/EcoNova-Landing-Page.git
+    git clone https://github.com/Michael7666/EcoNova-Landing-Page.git
     cd EcoNova-Landing-Page
 
 2. Install Dependencies:

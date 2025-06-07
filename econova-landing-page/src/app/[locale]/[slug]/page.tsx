@@ -1,4 +1,4 @@
-import {getLandingPage}  from '../../../lib/contentful';
+import { getLandingPage } from '../../../lib/contentful';
 import HeroSection from '../../../components/sections/HeroSection';
 import FeaturesSection from '../../../components/sections/FeaturesSection';
 import TestimonialsSection from '../../../components/sections/TestimonialsSection';
@@ -13,9 +13,14 @@ interface Params {
   slug: string;
 }
 
-export default async function LandingPage({ params }: { params: Params | Promise<Params> }) {
-  const resolvedParams = await params;
-  const { slug, locale } = resolvedParams || { slug: 'econova', locale: 'en-US' };
+// Update the props interface to match Next.js 15 requirements
+interface PageProps {
+  params: Promise<Params>;
+}
+
+export default async function LandingPage({ params }: PageProps) {
+  // Await the params Promise
+  const { slug, locale } = await params || { slug: 'econova', locale: 'en-US' };
   
   const page = await getLandingPage(slug, locale);
   if (!page || !page.sectionsCollection?.items) {
@@ -25,7 +30,7 @@ export default async function LandingPage({ params }: { params: Params | Promise
       </div>
     );
   }
-
+  
   return (
     <main className="min-h-screen flex flex-col">
       <LanguageSwitcher slug={slug} />

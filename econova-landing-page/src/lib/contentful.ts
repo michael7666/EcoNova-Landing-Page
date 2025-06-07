@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Document } from '@contentful/rich-text-types';
 
 const client = new GraphQLClient(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
   headers: {
@@ -32,7 +32,7 @@ export interface HeroSection {
 
 export interface FeatureItem {
   title: string;
-  description: { json: any };
+  description: { json: Document };
   icon?: { url: string };
 }
 
@@ -43,7 +43,7 @@ export interface FeaturesSection {
 }
 
 export interface TestimonialItem {
-  quote: { json: any };
+  quote: { json: Document };
   authorName: string;
   authorTitle: string;
 }
@@ -57,7 +57,7 @@ export interface TestimonialSection {
 export interface CtaSection {
   __typename: 'CtaSection';
   headline: string;
-  description: { json: any };
+  description: { json: Document };
   ctaButton?: SharedCtaBlock;
 }
 
@@ -145,8 +145,8 @@ export async function getLandingPage(urlslug: string, language: string = 'en-US'
       return null;
     }
     return page;
-  } catch (error: any) {
-    
+  } catch {
+    console.error('Error fetching landing page');
     return null;
   }
 }

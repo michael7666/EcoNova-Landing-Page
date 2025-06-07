@@ -1,4 +1,4 @@
-import { getLandingPage } from '@/lib/contentful';
+import {getLandingPage}  from '../../../lib/contentful';
 import HeroSection from '../../../components/sections/HeroSection';
 import FeaturesSection from '../../../components/sections/FeaturesSection';
 import TestimonialsSection from '../../../components/sections/TestimonialsSection';
@@ -6,29 +6,37 @@ import CtaSection from '../../../components/sections/CtaSection';
 import FooterSection from '../../../components/sections/FooterSection';
 import LanguageSwitcher from '../../../components/LanguageSwitcher';
 
-export const revalidate = 60; // ISR: Revalidate every 60 seconds
+export const revalidate = 60;
 
-export default async function LandingPage({ params }: { params: { locale: string; slug: string } }) {
-  const page = await getLandingPage(params.slug, params.locale);
-  if (!page) {
+interface Params {
+  locale: string;
+  slug: string;
+}
+
+export default async function LandingPage({ params }: { params: Params | Promise<Params> }) {
+  const resolvedParams = await params;
+  const { slug, locale } = resolvedParams || { slug: 'econova', locale: 'en-US' };
+  
+  const page = await getLandingPage(slug, locale);
+  if (!page || !page.sectionsCollection?.items) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-red-600">Error loading page. Please try again later.</p>
+        <p className="text-red-600">Error loading page. Please check Contentful data or try again later.</p>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen">
-      <LanguageSwitcher slug={params.slug} />
-      <div className="flex flex-col">
-        {page.sectionsCollection.items.map((section, index) => {
+    <main className="min-h-screen flex flex-col">
+      <LanguageSwitcher slug={slug} />
+      {page.sectionsCollection.items.map((section, index) => {
+        try {
           switch (section.__typename) {
             case 'HeroSection':
               return <HeroSection key={index} {...section} />;
             case 'FeaturesSection':
               return <FeaturesSection key={index} {...section} />;
-            case 'TestimonialsSection':
+            case 'TestimonialSection':
               return <TestimonialsSection key={index} {...section} />;
             case 'CtaSection':
               return <CtaSection key={index} {...section} />;
@@ -37,8 +45,11 @@ export default async function LandingPage({ params }: { params: { locale: string
             default:
               return null;
           }
-        })}
-      </div>
+        } catch (error) {
+          console.error(`Error rendering section ${section.__typename} at index ${index}:`, error);
+          return null;
+        }
+      })}
     </main>
   );
 }
